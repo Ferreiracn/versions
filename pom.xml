@@ -4,8 +4,8 @@
 	<groupId>com.sap.cloud.sample</groupId>
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>hello-world</artifactId>
-	 <version>1.0.0</version>
-	<packaging>jar</packaging>
+	<version>1.0.0</version>
+	<packaging>war</packaging>
 	<profiles>
 		<profile>
 			<id>jenkins</id>
@@ -19,14 +19,17 @@
 				<plugins>
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-jar-plugin</artifactId>
+						<artifactId>maven-war-plugin</artifactId>
+						<configuration>
+							<webXml>WebContent\WEB-INF\web.xml</webXml>        
+						</configuration>
 						<version>2.5</version>
 						<executions>
 							<execution>
 								<id>generate-default-version</id>
 								<phase>package</phase>
 								<goals>
-									<goal>jar</goal>
+									<goal>war</goal>
 								</goals>
 								<configuration>
 									<classifier>${BUILD_NUMBER}</classifier>
